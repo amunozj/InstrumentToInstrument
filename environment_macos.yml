@@ -3,14 +3,12 @@ channels:
   - conda-forge
   - pytorch
   - nvidia
+  - apple
 dependencies:
   - python
   - wandb
   - ipywidgets
-  - pytorch::pytorch
-  - pytorch::torchvision
-  - pytorch::torchaudio
-  - pytorch::pytorch-cuda=11.8
+  - tensorflow-deps
   - lightning
   - scikit-learn
   - scikit-image
@@ -23,5 +21,6 @@ dependencies:
   - pandas
   - wandb
   - matplotlib
-  - pip
-
+  - pip:
+    - tensorflow-macos
+    - tensorflow-metal

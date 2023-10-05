@@ -1,4 +1,8 @@
+import os
+import sys
 from astropy.visualization import ImageNormalize, LinearStretch
+
+sys.path.append(os.path.dirname(os.getcwd()))
 
 from iti.data.dataset import BaseDataset
 from iti.data.editor import LoadMapEditor, NormalizeRadiusEditor, RemoveOffLimbEditor, MapToDataEditor, NanEditor, \

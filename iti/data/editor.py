@@ -325,6 +325,7 @@ class NormalizeRadiusEditor(Editor):
 
         if self.fix_irradiance_with_distance:
             old_meta = s_map.meta.copy()
+            old_irradiance = np.nansum(s_map.data)
         r_obs_pix = s_map.rsun_obs / s_map.scale[0]  # Get the solar radius in pixels
         r_obs_pix = (1 + self.padding_factor) * r_obs_pix  # Get the size in pixels of the padded radius 
         scale_factor = self.resolution / (2 * r_obs_pix.value)
@@ -352,7 +353,7 @@ class NormalizeRadiusEditor(Editor):
             # But we are also closer to the sun
             s_map.meta['dsun_obs'] = (s_map.meta['rsun_ref']/np.tan(s_map.meta['rsun_obs']*u.arcsec)).value
             # Change intensity due to distance change
-            s_map.data[:] = s_map.data[:] * (old_meta['dsun_obs']**2)/(s_map.meta['dsun_obs']**2)
+            s_map.data[:] = s_map.data[:] * old_irradiance * (old_meta['dsun_obs']**2)/(s_map.meta['dsun_obs']**2)/np.nansum(s_map.data[:])
 
         return s_map
 

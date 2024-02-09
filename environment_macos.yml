@@ -1,0 +1,26 @@
+name: iti
+channels:
+  - conda-forge
+  - pytorch
+  - nvidia
+  - apple
+dependencies:
+  - python
+  - wandb
+  - ipywidgets
+  - tensorflow-deps
+  - lightning
+  - scikit-learn
+  - scikit-image
+  - tqdm
+  - numpy
+  - sunpy
+  - aiapy
+  - drms
+  - astropy
+  - pandas
+  - wandb
+  - matplotlib
+  - pip:
+    - tensorflow-macos
+    - tensorflow-metal
